@@ -1,8 +1,6 @@
 package compras.accesoADatos;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Conexion {
@@ -27,6 +25,8 @@ public class Conexion {
                 Class.forName("org.mariadb.jdbc.Driver");
                 
                 connection = DriverManager.getConnection(URL + DB, USER, PASSWORD);
+                
+                JOptionPane.showMessageDialog(null, "Conectado exitosamente");
                 
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error al cargar el driver" + ex.getMessage());
