@@ -10,11 +10,15 @@ public class Compras {
         Conexion.getConexion();
         
         
-        Producto arroz = new Producto("arroz","tio Franco",500.00,20,true);
+        //Producto arroz = new Producto("arroz","tio Franco",500.00,20,true);
         
-        ProductoData produc = new ProductoData();
+        //Producto fideos = new Producto("fideos","carolina",250.00,30,true);
         
-        produc.guardarProducto(arroz);
+        //ProductoData produc = new ProductoData();
+        
+        //produc.guardarProducto(arroz);
+        
+        //produc.guardarProducto(fideos);
     }
     
 }
