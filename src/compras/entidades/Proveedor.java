@@ -1,7 +1,7 @@
 package compras.entidades;
 
 public class Proveedor {
-    
+
     private int idProveedor;
     private String razonSocial;
     private String domicilio;
@@ -59,5 +59,5 @@ public class Proveedor {
     public String toString() {
         return "Proveedor{" + "idProveedor=" + idProveedor + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono + '}';
     }
-    
+
 }

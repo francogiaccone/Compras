@@ -1,7 +1,7 @@
 package compras;
 
 import compras.accesoADatos.*;
-import compras.entidades.Producto;
+import compras.entidades.*;
 
 public class Compras {
 
