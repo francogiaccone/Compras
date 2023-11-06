@@ -40,12 +40,16 @@ public class Compras {
             System.out.println(ProductoData);
         }*/
         
-        Proveedor Franco = new Proveedor("Genaro Fria","Buenos Aires 109","265723670145");
+        Proveedor Franco = new Proveedor("Genaro Fria","Buenos Aires 109","265723670145", true);
         
         ProveedorData Provee = new ProveedorData();
         
         Provee.guardarProveedor(Franco);
         
+        Proveedor sergio = new Proveedor("Sergio sa", "av siempre viva", "0124124", true);
+        
+        System.out.println(Franco);
+        Provee.modificarProveedor(sergio);
     }
     
 }
