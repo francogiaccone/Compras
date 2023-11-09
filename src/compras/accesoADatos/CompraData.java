@@ -71,7 +71,7 @@ public class CompraData {
     }
     
     public List<Compra> listarCompras() {
-        String sql = "SELECT idCompra, idProveedor, fecha";
+        String sql = "SELECT idCompra, idProveedor, fecha FROM compra";
         
         ArrayList<Compra> compras = new ArrayList<>();
         

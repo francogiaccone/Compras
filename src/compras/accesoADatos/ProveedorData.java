@@ -16,8 +16,8 @@ public class ProveedorData {
     
     public void guardarProveedor(Proveedor proveedor) {
         
-        String sql = "INSERT INTO proveedor (razonSocial, domicilio, telefono)"
-                + "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO proveedor (razonSocial, domicilio, telefono, estado)"
+                + "VALUES (?, ?, ?, ?)";
         
         try {
             
@@ -25,6 +25,8 @@ public class ProveedorData {
             ps.setString(1, proveedor.getRazonSocial());
             ps.setString(2, proveedor.getDomicilio());
             ps.setString(3, proveedor.getTelefono());
+            ps.setBoolean(4, proveedor.isEstado());
+            
             ps.executeUpdate();
             
             ResultSet rs = ps.getGeneratedKeys();
@@ -43,7 +45,7 @@ public class ProveedorData {
     public void modificarProveedor(Proveedor proveedor) {
 
         String sql = "UPDATE proveedor SET razonSocial = ?, domicilio = ?, telefono = ?"
-                + " WHERE idProovedor = ? ";
+                + " WHERE idProveedor = ? ";
         try {
             
             PreparedStatement ps = con.prepareStatement(sql);
@@ -70,11 +72,8 @@ public class ProveedorData {
             
             ps.setInt(1, id);
             
-            int exito = ps.executeUpdate();
-            
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Proveedor eliminado");
-            }
+            ps.executeUpdate();
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Proveedor.");
         }
@@ -109,7 +108,7 @@ public class ProveedorData {
     }
     
     public List<Proveedor> listarProveedores() {
-        String sql = "SELECT idProveedor, razonSocial, domicilio, telefono WHERE estado = 1";
+        String sql = "SELECT idProveedor, razonSocial, domicilio, telefono FROM proveedor WHERE estado = 1";
         
         ArrayList<Proveedor> proveedores = new ArrayList<>();
         
@@ -135,6 +134,8 @@ public class ProveedorData {
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Proveedor");
+        } catch (NullPointerException ex) {
+            
         }
         
         return proveedores;

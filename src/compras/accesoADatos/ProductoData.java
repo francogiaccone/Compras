@@ -55,7 +55,7 @@ public class ProductoData {
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Producto modificada con exito");
+                JOptionPane.showMessageDialog(null, "Producto modificado con exito.");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Producto");
@@ -71,11 +71,7 @@ public class ProductoData {
 
             ps.setInt(1, id);
 
-            int exito = ps.executeUpdate();
-            if (exito == 1) {
-
-                JOptionPane.showMessageDialog(null, "Producto eliminado");
-            }
+            ps.executeUpdate();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Producto");
