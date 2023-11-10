@@ -46,10 +46,10 @@ public class Compras {
         
         Provee.guardarProveedor(Franco);
         
-        Proveedor sergio = new Proveedor("Sergio sa", "av siempre viva", "0124124", true);
+        //Proveedor sergio = new Proveedor("Sergio sa", "av siempre viva", "0124124", true);
         
-        System.out.println(Franco);
-        Provee.modificarProveedor(sergio);
+        //System.out.println(Franco);
+        //Provee.modificarProveedor(sergio);
     }
     
 }
