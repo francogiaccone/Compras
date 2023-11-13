@@ -289,6 +289,8 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
             actualizarTabla();
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Error de formato, solo números. (tabla Precio y Stock)");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(this, "Seleccione un producto de la tabla para modificar.");
         }
 
 
