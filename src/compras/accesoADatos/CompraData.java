@@ -33,7 +33,7 @@ public class CompraData {
             
             if (rs.next()) {
                 compra.setIdCompra(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Compra registrada.");
+                //JOptionPane.showMessageDialog(null, "Compra registrada.");
             }
             
             ps.close();

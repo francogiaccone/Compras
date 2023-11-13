@@ -25,7 +25,7 @@ public class DetalleCompraData {
             
             ps.setInt(1, detalle.getCantidad());
             ps.setDouble(2, detalle.getPrecioCosto());
-            ps.setInt(1, detalle.getCompra().getIdCompra());
+            ps.setInt(3, detalle.getCompra().getIdCompra());
             ps.setInt(4, detalle.getProducto().getIdProducto());
             
             ps.executeUpdate();
@@ -34,7 +34,7 @@ public class DetalleCompraData {
             
             if (rs.next()) {
                 detalle.setIdDetalle(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Detalle de compra registrado.");
+                //JOptionPane.showMessageDialog(null, "Detalle de compra registrado.");
             }
             
             ps.close();

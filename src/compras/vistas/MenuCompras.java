@@ -2,9 +2,9 @@ package compras.vistas;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-public class MenuProveedor extends javax.swing.JInternalFrame {
+public class MenuCompras extends javax.swing.JInternalFrame {
 
-    public MenuProveedor() {
+    public MenuCompras() {
         initComponents();
         
         BasicInternalFrameUI internalFrameUI = (BasicInternalFrameUI) this.getUI();
@@ -154,26 +154,18 @@ public class MenuProveedor extends javax.swing.JInternalFrame {
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        ProveedoresRegistrar provRegistrar = new ProveedoresRegistrar();
-        provRegistrar.setVisible(true);
-        escritorio.add(provRegistrar);
+        CompraRegistrar comRegistrar = new CompraRegistrar();
+        comRegistrar.setVisible(true);
+        escritorio.add(comRegistrar);
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
-    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        ProveedoresModificar provModificar = new ProveedoresModificar();
-        provModificar.setVisible(true);
-        escritorio.add(provModificar);
-    }//GEN-LAST:event_jbModificarActionPerformed
-
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        ProveedoresEliminar provEliminar = new ProveedoresEliminar();
-        provEliminar.setVisible(true);
-        escritorio.add(provEliminar);
+        
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        
+    }//GEN-LAST:event_jbModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

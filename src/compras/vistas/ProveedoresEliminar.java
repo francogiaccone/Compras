@@ -1,19 +1,25 @@
 package compras.vistas;
 
-import compras.accesoADatos.ProductoData;
-import compras.entidades.Producto;
+import compras.accesoADatos.ProveedorData;
+import compras.entidades.Proveedor;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
-public class ProductosEliminar extends javax.swing.JInternalFrame {
+public class ProveedoresEliminar extends javax.swing.JInternalFrame {
 
-    ProductoData prodData;
+    ProveedorData provData;
     DefaultTableModel modelo;
     
-    public ProductosEliminar() {
+    public ProveedoresEliminar() {
         initComponents();
-        prodData = new ProductoData();
+        
+        BasicInternalFrameUI internalFrameUI = (BasicInternalFrameUI) this.getUI();
+        internalFrameUI.setNorthPane(null);
+        this.setResizable(false);
+        
+        provData = new ProveedorData();
         
         modelo = new DefaultTableModel() {
             
@@ -26,27 +32,18 @@ public class ProductosEliminar extends javax.swing.JInternalFrame {
         armarCabecera();
         cargarTabla();
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtTabla = new javax.swing.JTable();
         jbEliminar = new javax.swing.JButton();
 
-        jbVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/atras.png"))); // NOI18N
-        jbVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbVolverActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Eliminar Producto");
+        jLabel1.setText("Eliminar Proveedor");
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,88 +76,77 @@ public class ProductosEliminar extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jbVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel1))
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbEliminar)
-                .addGap(356, 356, 356))
+                        .addGap(413, 413, 413)
+                        .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(358, 358, 358)
+                        .addComponent(jLabel1)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jbVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbEliminar)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
-        dispose();
-    }//GEN-LAST:event_jbVolverActionPerformed
-
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         int[] filas = jtTabla.getSelectedRows();
         
         for (int fila : filas) {
-            int idProducto = (int) modelo.getValueAt(fila, 0);
+            int idProveedor = (int) modelo.getValueAt(fila, 0);
             
-            prodData.eliminarProducto(idProducto);
+            provData.eliminarProveedor(idProveedor);
         }
         
-        if (filas.length == 0) {
-            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún producto.");
-        } else if (filas.length == 1) {
-            JOptionPane.showMessageDialog(this, "Se ha eliminado 1 producto.");
+        int seleccionFila = filas.length;
+        if (seleccionFila == 0) {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún proveedor.");
+        } else if (seleccionFila == 1) {
+            JOptionPane.showMessageDialog(this, "Se ha eliminado 1 proveedor.");
         } else {
-            JOptionPane.showMessageDialog(this, "Se han eliminado " + filas.length + " productos.");
+            JOptionPane.showMessageDialog(this, "Se han eliminado " + seleccionFila + " proveedores.");
         }
         
-        modelo.setRowCount(0);
-        
-        cargarTabla();
+        actualizarTabla();
     }//GEN-LAST:event_jbEliminarActionPerformed
     
     private void armarCabecera() {
         modelo.addColumn("ID");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Descripción");
-        modelo.addColumn("Precio");
-        modelo.addColumn("Stock");
+        modelo.addColumn("Razón Social");
+        modelo.addColumn("Domicilio");
+        modelo.addColumn("Teléfono");
         
         jtTabla.setModel(modelo);
     }
     
     private void cargarTabla() {
-        ArrayList<Producto> productos = (ArrayList<Producto>) prodData.listarProductos();
+        ArrayList<Proveedor> proveedores = (ArrayList<Proveedor>) provData.listarProveedores();
         
-        for (Producto prod : productos) {
-            modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getPrecioActual(), prod.getStock()});
+        for (Proveedor prov : proveedores) {
+            modelo.addRow(new Object[] {prov.getIdProveedor(), prov.getRazonSocial(), prov.getDomicilio(), prov.getTelefono()});
         }
     }
 
+    private void actualizarTabla() {
+        modelo.setRowCount(0);
+        cargarTabla();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbEliminar;
-    private javax.swing.JButton jbVolver;
     private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
 }

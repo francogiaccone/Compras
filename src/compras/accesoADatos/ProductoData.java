@@ -55,7 +55,7 @@ public class ProductoData {
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Producto modificado con exito.");
+                //JOptionPane.showMessageDialog(null, "Producto modificado con exito.");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Producto");
@@ -111,6 +111,7 @@ public class ProductoData {
     public List<Producto> listarProductos() {
         String sql = "SELECT idProducto, nombre, descripcion, precioActual, stock FROM producto WHERE estado = 1";
         ArrayList<Producto> productos = new ArrayList<>();
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -135,5 +136,106 @@ public class ProductoData {
         }
         return productos;
     }
+    
+    public List<Producto> listarProductosPorFecha(String fecha) {
+        
+        String sql = "SELECT producto.* FROM producto "
+                    + "JOIN detallecompra ON detallecompra.idProducto = producto.idProducto "
+                    + "JOIN compra ON detallecompra.idCompra = compra.idCompra "
+                    + "WHERE compra.fecha = ? AND producto.estado = 1";
+        
+        ArrayList<Producto> productos = new ArrayList<>();
 
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, fecha);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(true);
+
+                productos.add(producto);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Producto");
+        }
+        return productos;
+    }
+    
+    public List<Producto> listarProductosPorCompra(int idCompra) {
+        String sql = "SELECT producto.* FROM producto "
+                    + "JOIN detallecompra ON detallecompra.idProducto = producto.idProducto "
+                    + "JOIN compra ON detallecompra.idCompra = compra.idCompra "
+                    + "WHERE compra.idCompra = ? AND producto.estado = 1";
+        
+        ArrayList<Producto> productos = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idCompra);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(true);
+
+                productos.add(producto);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Producto");
+        }
+        return productos;
+    }
+    
+    public List<Producto> listarProductosMasComprados(String fecha1, String fecha2) {
+        String sql = "SELECT producto.idProducto, producto.nombre, producto.descripcion, SUM(detallecompra.cantidad) AS total FROM producto " 
+                    + "JOIN detallecompra ON producto.idProducto = detallecompra.idProducto "
+                    + "JOIN compra ON detallecompra.idCompra = compra.idCompra "
+                    + "WHERE compra.fecha BETWEEN ? AND ?"
+                    + "GROUP BY producto.idProducto, producto.nombre, producto.descripcion " 
+                    + "ORDER BY total DESC";
+        
+        ArrayList<Producto> productos = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, fecha1);
+            ps.setString(2, fecha2);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setStock(rs.getInt("total"));
+
+                productos.add(producto);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Producto");
+        }
+        return productos;
+    }
+    
 }
