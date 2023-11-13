@@ -1,5 +1,7 @@
 package compras.vistas;
-
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 public class MenuProveedor extends javax.swing.JInternalFrame {
@@ -22,13 +24,20 @@ public class MenuProveedor extends javax.swing.JInternalFrame {
         jbEliminar = new javax.swing.JButton();
         jbListarPorProducto = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"));
+        Image image = icon.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setBackground(new java.awt.Color(241, 241, 241));
 
-        jbRegistrar.setBackground(new java.awt.Color(255, 255, 255));
+        jbRegistrar.setBackground(new java.awt.Color(208, 207, 207));
         jbRegistrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         jbRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
@@ -46,7 +55,7 @@ public class MenuProveedor extends javax.swing.JInternalFrame {
             }
         });
 
-        jbEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        jbEliminar.setBackground(new java.awt.Color(208, 207, 207));
         jbEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
@@ -64,7 +73,7 @@ public class MenuProveedor extends javax.swing.JInternalFrame {
             }
         });
 
-        jbListarPorProducto.setBackground(new java.awt.Color(255, 255, 255));
+        jbListarPorProducto.setBackground(new java.awt.Color(208, 207, 207));
         jbListarPorProducto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbListarPorProducto.setForeground(new java.awt.Color(0, 0, 0));
         jbListarPorProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lista.png"))); // NOI18N
@@ -77,7 +86,7 @@ public class MenuProveedor extends javax.swing.JInternalFrame {
         jbListarPorProducto.setRequestFocusEnabled(false);
         jbListarPorProducto.setVerifyInputWhenFocusTarget(false);
 
-        jbModificar.setBackground(new java.awt.Color(255, 255, 255));
+        jbModificar.setBackground(new java.awt.Color(208, 207, 207));
         jbModificar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbModificar.setForeground(new java.awt.Color(0, 0, 0));
         jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N

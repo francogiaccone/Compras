@@ -1,5 +1,8 @@
 package compras.vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 public class MenuProductos extends javax.swing.JInternalFrame {
@@ -21,13 +24,21 @@ public class MenuProductos extends javax.swing.JInternalFrame {
         jbListarPorCompra = new javax.swing.JButton();
         jbListarMasComprados = new javax.swing.JButton();
         jbListarPorFecha = new javax.swing.JButton();
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"));
+        Image image = icon.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+
+        };
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setBackground(new java.awt.Color(241, 241, 241));
 
-        jbEditar.setBackground(new java.awt.Color(255, 255, 255));
+        jbEditar.setBackground(new java.awt.Color(208, 207, 207));
         jbEditar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbEditar.setForeground(new java.awt.Color(0, 0, 0));
         jbEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
@@ -45,7 +56,7 @@ public class MenuProductos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbListarPorCompra.setBackground(new java.awt.Color(255, 255, 255));
+        jbListarPorCompra.setBackground(new java.awt.Color(208, 207, 207));
         jbListarPorCompra.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbListarPorCompra.setForeground(new java.awt.Color(0, 0, 0));
         jbListarPorCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lista.png"))); // NOI18N
@@ -63,7 +74,7 @@ public class MenuProductos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbListarMasComprados.setBackground(new java.awt.Color(255, 255, 255));
+        jbListarMasComprados.setBackground(new java.awt.Color(208, 207, 207));
         jbListarMasComprados.setForeground(new java.awt.Color(0, 0, 0));
         jbListarMasComprados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lista.png"))); // NOI18N
         jbListarMasComprados.setText("Más comprados");
@@ -80,7 +91,7 @@ public class MenuProductos extends javax.swing.JInternalFrame {
             }
         });
 
-        jbListarPorFecha.setBackground(new java.awt.Color(255, 255, 255));
+        jbListarPorFecha.setBackground(new java.awt.Color(208, 207, 207));
         jbListarPorFecha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbListarPorFecha.setForeground(new java.awt.Color(0, 0, 0));
         jbListarPorFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lista.png"))); // NOI18N

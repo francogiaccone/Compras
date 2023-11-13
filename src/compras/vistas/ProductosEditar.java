@@ -56,16 +56,25 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
         jbModificar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(234, 236, 238));
         setMinimumSize(new java.awt.Dimension(950, 550));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(234, 236, 238));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre");
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Descripción");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Precio");
 
+        jbRegistrar.setBackground(new java.awt.Color(234, 236, 238));
         jbRegistrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(0, 153, 51));
         jbRegistrar.setText("Registrar");
@@ -75,6 +84,7 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Stock");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -104,7 +114,7 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
                                 .addGap(89, 89, 89)
                                 .addComponent(jLabel4))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
+                        .addGap(72, 72, 72)
                         .addComponent(jbRegistrar)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -129,11 +139,13 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
                 .addComponent(jtfStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbRegistrar)
-                .addGap(31, 31, 31))
+                .addGap(34, 34, 34))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Editar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(234, 236, 238));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Editar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
+        jtTabla.setBackground(new java.awt.Color(234, 236, 238));
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -149,6 +161,7 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
         jtTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jtTabla);
 
+        jbModificar.setBackground(new java.awt.Color(234, 236, 238));
         jbModificar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbModificar.setForeground(new java.awt.Color(0, 153, 255));
         jbModificar.setText("Modificar");
@@ -158,6 +171,7 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
             }
         });
 
+        jbEliminar.setBackground(new java.awt.Color(234, 236, 238));
         jbEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(255, 0, 51));
         jbEliminar.setText("Eliminar");

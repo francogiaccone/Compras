@@ -2,6 +2,7 @@ package compras.vistas;
 
 import compras.accesoADatos.ProductoData;
 import compras.entidades.Producto;
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +33,8 @@ public class ProductosListarMasComprados extends javax.swing.JInternalFrame {
         };
         
         armarCabecera();
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -138,10 +141,10 @@ public class ProductosListarMasComprados extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        
+
         try {
             Date fechaDate1, fechaDate2;
-            
+
             if (jdcFecha1.getDate() != null && jdcFecha2.getDate() == null) {
                 fechaDate1 = jdcFecha1.getDate();
                 fechaDate2 = new Date();
@@ -152,25 +155,25 @@ public class ProductosListarMasComprados extends javax.swing.JInternalFrame {
                 fechaDate1 = jdcFecha1.getDate();
                 fechaDate2 = jdcFecha2.getDate();
             }
-            
+
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            
+
             String fecha1 = dateFormat.format(fechaDate1);
             String fecha2 = dateFormat.format(fechaDate2);
-            
+
             ArrayList<Producto> productos = (ArrayList<Producto>) prodData.listarProductosMasComprados(fecha1, fecha2);
-            
+
             modelo.setRowCount(0);
-            
+
             for (Producto prod : productos) {
                 modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getStock()});
             }
-            
+
         } catch (NullPointerException ex) {
             modelo.setRowCount(0);
             JOptionPane.showMessageDialog(this, "Ingrese una fecha en al menos un campo.");
         }
-        
+
     }//GEN-LAST:event_jbBuscarActionPerformed
    
     private void armarCabecera() {
@@ -178,6 +181,8 @@ public class ProductosListarMasComprados extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Descripción");
         modelo.addColumn("Total Comprado");
+        
+        
         
         jtTabla.setModel(modelo);
     }
