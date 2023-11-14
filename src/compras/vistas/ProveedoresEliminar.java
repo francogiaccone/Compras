@@ -1,7 +1,10 @@
 package compras.vistas;
 
 import compras.accesoADatos.ProveedorData;
+import compras.entidades.Historial;
 import compras.entidades.Proveedor;
+import static compras.vistas.MenuHistorial.historial;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -112,11 +115,15 @@ public class ProveedoresEliminar extends javax.swing.JInternalFrame {
         
         int seleccionFila = filas.length;
         if (seleccionFila == 0) {
-            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún proveedor.");
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún proveedor.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else if (seleccionFila == 1) {
             JOptionPane.showMessageDialog(this, "Se ha eliminado 1 proveedor.");
+            Historial nuevoHistorial = new Historial("1 proveedor eliminado", LocalDateTime.now());
+            historial.add(nuevoHistorial);
         } else {
             JOptionPane.showMessageDialog(this, "Se han eliminado " + seleccionFila + " proveedores.");
+            Historial nuevoHistorial = new Historial(seleccionFila + " proveedores eliminados", LocalDateTime.now());
+            historial.add(nuevoHistorial);
         }
         
         actualizarTabla();

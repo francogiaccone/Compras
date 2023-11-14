@@ -3,7 +3,10 @@ package compras.vistas;
 import compras.accesoADatos.CompraData;
 import compras.accesoADatos.ProductoData;
 import compras.entidades.Compra;
+import compras.entidades.Historial;
 import compras.entidades.Producto;
+import static compras.vistas.MenuHistorial.historial;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -36,6 +39,9 @@ public class ProductosListarPorCompras extends javax.swing.JInternalFrame {
         armarCabecera();
         cargarTabla();
         modelo.setRowCount(0);
+        
+        Historial nuevoHistorial = new Historial("Listar productos por compras", LocalDateTime.now());
+        historial.add(nuevoHistorial);
     }
 
     @SuppressWarnings("unchecked")

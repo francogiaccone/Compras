@@ -1,7 +1,10 @@
 package compras.vistas;
 
 import compras.accesoADatos.ProveedorData;
+import compras.entidades.Historial;
 import compras.entidades.Proveedor;
+import static compras.vistas.MenuHistorial.historial;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -130,13 +133,16 @@ public class ProveedoresRegistrar extends javax.swing.JInternalFrame {
         String telefono = jtfTelefono.getText().trim();
 
         if (razonSocial.isEmpty() || domicilio.isEmpty() || telefono.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Hay campos vacíos.");
+            JOptionPane.showMessageDialog(this, "Hay campos vacíos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         Proveedor proveedor = new Proveedor(razonSocial, domicilio, telefono, true);
         
         provData.guardarProveedor(proveedor);
+        
+        Historial nuevoHistorial = new Historial("Proveedor registrado", LocalDateTime.now());
+        historial.add(nuevoHistorial);
 
         jbLimpiarActionPerformed(evt);
     }//GEN-LAST:event_jbRegistrarActionPerformed

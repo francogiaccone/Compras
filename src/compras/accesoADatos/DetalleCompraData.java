@@ -1,17 +1,22 @@
 package compras.accesoADatos;
 
-import compras.entidades.DetalleCompra;
+import compras.entidades.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class DetalleCompraData {
     
     private Connection con = null;
+    CompraData comData;
+    ProductoData prodData;
     
     public DetalleCompraData() {
         
         con = Conexion.getConexion();
-        
+        comData = new CompraData();
+        prodData = new ProductoData();
     }
     
     public void guardarDetalle(DetalleCompra detalle) {
@@ -59,4 +64,77 @@ public class DetalleCompraData {
         }
     }
     
+    public List<DetalleCompra> listarDetalleCompra() {
+        String sql = "SELECT detallecompra.idDetalle, producto.nombre, detallecompra.cantidad, detallecompra.precioCosto, compra.fecha, proveedor.razonSocial FROM detallecompra "
+                    + "JOIN compra ON detallecompra.idCompra = compra.idCompra "
+                    + "JOIN producto ON detallecompra.idProducto = producto.idProducto "
+                    + "JOIN proveedor ON compra.idProveedor = proveedor.idProveedor";
+        
+        ArrayList<DetalleCompra> detalles = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+                DetalleCompra detalleCompra = new DetalleCompra();
+                detalleCompra.setIdDetalle(rs.getInt("idDetalle"));
+                Producto producto = new Producto(rs.getString("nombre"), "", 0, 0, true);
+                detalleCompra.setProducto(producto);
+                detalleCompra.setCantidad(rs.getInt("cantidad"));
+                detalleCompra.setPrecioCosto(rs.getDouble("precioCosto"));
+                Proveedor proveedor = new Proveedor(rs.getString("razonSocial"), "", "", true);
+                Compra compra = new Compra(proveedor, rs.getDate("fecha").toLocalDate());
+                detalleCompra.setCompra(compra);
+                
+                detalles.add(detalleCompra);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla DetalleCompra");
+        }
+        
+        return detalles;
+    }
+    
+    public List<DetalleCompra> listarDetalleCompraPorProveedor(int idProveedor) {
+        String sql = "SELECT detallecompra.idDetalle, producto.nombre, detallecompra.cantidad, detallecompra.precioCosto, compra.fecha FROM detallecompra "
+                    + "JOIN compra ON detallecompra.idCompra = compra.idCompra "
+                    + "JOIN producto ON detallecompra.idProducto = producto.idProducto "
+                    + "WHERE compra.idProveedor = ?";
+        
+        ArrayList<DetalleCompra> detalles = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProveedor);
+
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+                DetalleCompra detalleCompra = new DetalleCompra();
+                detalleCompra.setIdDetalle(rs.getInt("idDetalle"));
+                Producto producto = new Producto(rs.getString("nombre"), "", 0, 0, true);
+                detalleCompra.setProducto(producto);
+                detalleCompra.setCantidad(rs.getInt("cantidad"));
+                detalleCompra.setPrecioCosto(rs.getDouble("precioCosto"));
+                Compra compra = new Compra(null, rs.getDate("fecha").toLocalDate());
+                detalleCompra.setCompra(compra);
+                
+                detalles.add(detalleCompra);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla DetalleCompra");
+        }
+        
+        return detalles;
+    }
 }

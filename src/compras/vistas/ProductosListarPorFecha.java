@@ -1,8 +1,11 @@
 package compras.vistas;
 
 import compras.accesoADatos.ProductoData;
+import compras.entidades.Historial;
 import compras.entidades.Producto;
+import static compras.vistas.MenuHistorial.historial;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -32,7 +35,9 @@ public class ProductosListarPorFecha extends javax.swing.JInternalFrame {
         };
         
         armarCabecera();
-        cargarTabla();
+        
+        Historial nuevoHistorial = new Historial("Listar productos por fecha", LocalDateTime.now());
+        historial.add(nuevoHistorial);
     }
 
     @SuppressWarnings("unchecked")
@@ -122,7 +127,7 @@ public class ProductosListarPorFecha extends javax.swing.JInternalFrame {
             }
         } catch (NullPointerException ex) {
             modelo.setRowCount(0);
-            JOptionPane.showMessageDialog(this, "Error en el campo fecha.");
+            JOptionPane.showMessageDialog(this, "Error en el campo fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
@@ -134,14 +139,6 @@ public class ProductosListarPorFecha extends javax.swing.JInternalFrame {
         modelo.addColumn("Stock");
         
         jtTabla.setModel(modelo);
-    }
-    
-    private void cargarTabla() {
-        ArrayList<Producto> productos = (ArrayList<Producto>) prodData.listarProductos();
-        
-        for (Producto prod : productos) {
-            modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getPrecioActual(), prod.getStock()});
-        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel;

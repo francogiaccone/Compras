@@ -1,9 +1,11 @@
 package compras.vistas;
 
 import compras.accesoADatos.ProductoData;
+import compras.entidades.Historial;
 import compras.entidades.Producto;
-import java.awt.Color;
+import static compras.vistas.MenuHistorial.historial;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -34,7 +36,8 @@ public class ProductosListarMasComprados extends javax.swing.JInternalFrame {
         
         armarCabecera();
         
-        
+        Historial nuevoHistorial = new Historial("Listar productos más comprados", LocalDateTime.now());
+        historial.add(nuevoHistorial);
     }
 
     @SuppressWarnings("unchecked")
@@ -168,7 +171,7 @@ public class ProductosListarMasComprados extends javax.swing.JInternalFrame {
             for (Producto prod : productos) {
                 modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getStock()});
             }
-
+            
         } catch (NullPointerException ex) {
             modelo.setRowCount(0);
             JOptionPane.showMessageDialog(this, "Ingrese una fecha en al menos un campo.");
@@ -181,8 +184,6 @@ public class ProductosListarMasComprados extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Descripción");
         modelo.addColumn("Total Comprado");
-        
-        
         
         jtTabla.setModel(modelo);
     }

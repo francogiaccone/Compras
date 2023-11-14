@@ -1,7 +1,10 @@
 package compras.vistas;
 
 import compras.accesoADatos.ProductoData;
+import compras.entidades.Historial;
 import compras.entidades.Producto;
+import static compras.vistas.MenuHistorial.historial;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -238,7 +241,7 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
             String descripcion = jtfDescripcion.getText().trim();
 
             if (nombre.isEmpty() || descripcion.isEmpty() || jtfPrecio.getText().isEmpty() || jtfStock.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Hay campos vacíos.");
+                JOptionPane.showMessageDialog(this, "Hay campos vacíos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -248,25 +251,28 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
             Producto producto = new Producto(nombre, descripcion, precio, stock, true);
 
             prodData.guardarProducto(producto);
+            
+            Historial nuevoHistorial = new Historial("Producto agregado", LocalDateTime.now());
+            historial.add(nuevoHistorial);
 
             limpiarCampos();
 
             actualizarTabla();
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Error de formato, solo números.");
+            JOptionPane.showMessageDialog(this, "Error de formato, solo números.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         try {
             if (jtTabla.getSelectedRowCount() > 1) {
-                JOptionPane.showMessageDialog(this, "Seleccione una fila por favor.");
+                JOptionPane.showMessageDialog(this, "Seleccione una fila por favor.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
             if (jtTabla.isEditing()) {
-                JOptionPane.showMessageDialog(this, "Confirme la celda editada");
+                JOptionPane.showMessageDialog(this, "Confirme la celda editada", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -284,13 +290,16 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
 
             prodData.modificarProducto(producto);
             
+            Historial nuevoHistorial = new Historial("Producto modificado", LocalDateTime.now());
+            historial.add(nuevoHistorial);
+            
             JOptionPane.showMessageDialog(null, "Producto modificado con exito.");
 
             actualizarTabla();
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Error de formato, solo números. (tabla Precio y Stock)");
+            JOptionPane.showMessageDialog(this, "Error de formato, solo números. (tabla Precio y Stock)", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } catch (ArrayIndexOutOfBoundsException ex) {
-            JOptionPane.showMessageDialog(this, "Seleccione un producto de la tabla para modificar.");
+            JOptionPane.showMessageDialog(this, "Seleccione un producto de la tabla para modificar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
 
 
@@ -307,11 +316,15 @@ public class ProductosEditar extends javax.swing.JInternalFrame {
 
         int seleccionFila = filas.length;
         if (seleccionFila == 0) {
-            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún producto.");
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún producto.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else if (seleccionFila == 1) {
             JOptionPane.showMessageDialog(this, "Se ha eliminado 1 producto.");
+            Historial nuevoHistorial = new Historial("1 producto eliminado", LocalDateTime.now());
+            historial.add(nuevoHistorial);
         } else {
             JOptionPane.showMessageDialog(this, "Se han eliminado " + seleccionFila + " productos.");
+            Historial nuevoHistorial = new Historial(seleccionFila + " productos agregados", LocalDateTime.now());
+            historial.add(nuevoHistorial);
         }
 
         actualizarTabla();

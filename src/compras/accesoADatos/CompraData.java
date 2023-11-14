@@ -99,8 +99,5 @@ public class CompraData {
         }
         
         return compras;
-    }
-    
-    
-    
+    }  
 }

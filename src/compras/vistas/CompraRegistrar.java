@@ -2,7 +2,9 @@ package compras.vistas;
 
 import compras.accesoADatos.*;
 import compras.entidades.*;
+import static compras.vistas.MenuHistorial.historial;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -276,12 +278,12 @@ public class CompraRegistrar extends javax.swing.JInternalFrame {
     private void jbAgregarOtroProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarOtroProductoActionPerformed
         try {
             if (jcbProductos.getSelectedIndex() == -1 || jcbProveedores.getSelectedIndex() == -1 || jtfPrecioCosto.getText().isEmpty() || jtfCantidad.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Hay campos vacíos.");
+                JOptionPane.showMessageDialog(this, "Hay campos vacíos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
             if (jdcFecha.getDate() == null) {
-                JOptionPane.showMessageDialog(this, "Error en el campo fecha.");
+                JOptionPane.showMessageDialog(this, "Error en el campo fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -338,7 +340,7 @@ public class CompraRegistrar extends javax.swing.JInternalFrame {
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
         try {
             if (detalles.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Carrito vacío. Agregue un producto.");
+                JOptionPane.showMessageDialog(this, "Carrito vacío. Agregue un producto.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -361,6 +363,9 @@ public class CompraRegistrar extends javax.swing.JInternalFrame {
             }
 
             JOptionPane.showMessageDialog(this, "Compra realizada.");
+            
+            Historial nuevoHistorial = new Historial("Compra registrada", LocalDateTime.now());
+            historial.add(nuevoHistorial);
 
             detalles.clear();
 
@@ -370,7 +375,7 @@ public class CompraRegistrar extends javax.swing.JInternalFrame {
             limpiarFactura();
 
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(this, "Error de formato en la fecha. (dd/mm/yy)");
+            JOptionPane.showMessageDialog(this, "Error de formato en la fecha. (dd/mm/yy)", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbRegistrarActionPerformed
 

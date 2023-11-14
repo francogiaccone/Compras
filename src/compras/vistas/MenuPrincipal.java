@@ -11,6 +11,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public MenuPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -108,6 +109,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jbHistorial.setFocusPainted(false);
         jbHistorial.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbHistorial.setRequestFocusEnabled(false);
+        jbHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbHistorialActionPerformed(evt);
+            }
+        });
         jPanel3.add(jbHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 60, 50));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -216,7 +222,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        MenuListar menuLis = new MenuListar();
+        menuLis.setVisible(true);
+        escritorio.add(menuLis);
+        jlTitulo.setText("Menú listar");
     }//GEN-LAST:event_jbListarActionPerformed
 
     private void jbComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComprasActionPerformed
@@ -260,6 +271,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.add(menuProd);
         jlTitulo.setText("Menú productos");
     }//GEN-LAST:event_jbProductosActionPerformed
+
+    private void jbHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbHistorialActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        MenuHistorial historial = new MenuHistorial();
+        historial.setVisible(true);
+        escritorio.add(historial);
+        jlTitulo.setText("Historial");
+    }//GEN-LAST:event_jbHistorialActionPerformed
 
     public static void main(String args[]) {
 

@@ -3,7 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nahue/OneDrive/Escritorio/universidad/Java(Orientada%20a%20objetos)/aaa/Compras/src/compras/vistas/MenuPrincipal.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/entidades/Proveedor.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/MenuCompras.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/CompraRegistrar.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/entidades/Historial.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ProveedoresEliminar.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ProveedoresRegistrar.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/MenuProveedor.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ProductosListarMasComprados.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ProveedoresModificar.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/entidades/Producto.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ProductosEditar.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/Compras.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ProductosListarPorFecha.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/MenuHistorial.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/accesoADatos/DetalleCompraData.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/MenuProductos.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ProveedoresListarPorProducto.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/accesoADatos/CompraData.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ComprasListarPorProveedores.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/MenuListar.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/MenuPrincipal.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/accesoADatos/ProductoData.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/accesoADatos/ProveedorData.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/entidades/DetalleCompra.java</file>
+            <file>file:/C:/Users/franc/OneDrive/Escritorio/ULP/Laboratorio%20I/Compras/src/compras/vistas/ProductosListarPorCompras.java</file>
         </group>
     </open-files>
 </project-private>

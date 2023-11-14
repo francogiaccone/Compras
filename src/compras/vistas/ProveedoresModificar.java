@@ -1,7 +1,10 @@
 package compras.vistas;
 
 import compras.accesoADatos.ProveedorData;
+import compras.entidades.Historial;
 import compras.entidades.Proveedor;
+import static compras.vistas.MenuHistorial.historial;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -138,7 +141,7 @@ public class ProveedoresModificar extends javax.swing.JInternalFrame {
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         if (jcbProveedor.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(this, "Selecciona un proveedor para modificar.");
+            JOptionPane.showMessageDialog(this, "Selecciona un proveedor para modificar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -147,7 +150,7 @@ public class ProveedoresModificar extends javax.swing.JInternalFrame {
         String telefono = jtfTelefono.getText().trim();
 
         if (razonSocial.isEmpty() || domicilio.isEmpty() || telefono.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Hay campos vacíos.");
+            JOptionPane.showMessageDialog(this, "Hay campos vacíos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -158,6 +161,9 @@ public class ProveedoresModificar extends javax.swing.JInternalFrame {
         Proveedor proveedor = new Proveedor(id, razonSocial, domicilio, telefono, true);
 
         provData.modificarProveedor(proveedor);
+        
+        Historial nuevoHistorial = new Historial("Proveedor modificado", LocalDateTime.now());
+        historial.add(nuevoHistorial);
 
         actualizarCombo();
     }//GEN-LAST:event_jbModificarActionPerformed

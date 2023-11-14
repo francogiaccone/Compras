@@ -137,6 +137,35 @@ public class ProductoData {
         return productos;
     }
     
+    public List<Producto> listarProductosEliminados() {
+        String sql = "SELECT idProducto, nombre, descripcion, precioActual, stock FROM producto WHERE estado = 0";
+        ArrayList<Producto> productos = new ArrayList<>();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(false);
+
+                productos.add(producto);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla Producto");
+        }
+        return productos;
+    }
+    
     public List<Producto> listarProductosPorFecha(String fecha) {
         
         String sql = "SELECT producto.* FROM producto "

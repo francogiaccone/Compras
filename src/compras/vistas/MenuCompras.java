@@ -21,9 +21,7 @@ public class MenuCompras extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jbRegistrar = new javax.swing.JButton();
-        jbEliminar = new javax.swing.JButton();
-        jbListarPorProducto = new javax.swing.JButton();
-        jbModificar = new javax.swing.JButton();
+        jbListarPorProveedor = new javax.swing.JButton();
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"));
         Image image = icon.getImage();
         escritorio = new javax.swing.JDesktopPane(){
@@ -56,52 +54,21 @@ public class MenuCompras extends javax.swing.JInternalFrame {
             }
         });
 
-        jbEliminar.setBackground(new java.awt.Color(208, 207, 207));
-        jbEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jbEliminar.setForeground(new java.awt.Color(0, 0, 0));
-        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
-        jbEliminar.setText("Eliminar");
-        jbEliminar.setBorder(null);
-        jbEliminar.setBorderPainted(false);
-        jbEliminar.setFocusPainted(false);
-        jbEliminar.setFocusable(false);
-        jbEliminar.setIconTextGap(10);
-        jbEliminar.setRequestFocusEnabled(false);
-        jbEliminar.setVerifyInputWhenFocusTarget(false);
-        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+        jbListarPorProveedor.setBackground(new java.awt.Color(208, 207, 207));
+        jbListarPorProveedor.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbListarPorProveedor.setForeground(new java.awt.Color(0, 0, 0));
+        jbListarPorProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lista.png"))); // NOI18N
+        jbListarPorProveedor.setText("Por proveedor");
+        jbListarPorProveedor.setBorder(null);
+        jbListarPorProveedor.setBorderPainted(false);
+        jbListarPorProveedor.setFocusPainted(false);
+        jbListarPorProveedor.setFocusable(false);
+        jbListarPorProveedor.setIconTextGap(10);
+        jbListarPorProveedor.setRequestFocusEnabled(false);
+        jbListarPorProveedor.setVerifyInputWhenFocusTarget(false);
+        jbListarPorProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEliminarActionPerformed(evt);
-            }
-        });
-
-        jbListarPorProducto.setBackground(new java.awt.Color(208, 207, 207));
-        jbListarPorProducto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jbListarPorProducto.setForeground(new java.awt.Color(0, 0, 0));
-        jbListarPorProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lista.png"))); // NOI18N
-        jbListarPorProducto.setText("Por producto");
-        jbListarPorProducto.setBorder(null);
-        jbListarPorProducto.setBorderPainted(false);
-        jbListarPorProducto.setFocusPainted(false);
-        jbListarPorProducto.setFocusable(false);
-        jbListarPorProducto.setIconTextGap(10);
-        jbListarPorProducto.setRequestFocusEnabled(false);
-        jbListarPorProducto.setVerifyInputWhenFocusTarget(false);
-
-        jbModificar.setBackground(new java.awt.Color(208, 207, 207));
-        jbModificar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jbModificar.setForeground(new java.awt.Color(0, 0, 0));
-        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
-        jbModificar.setText("Modificar");
-        jbModificar.setBorder(null);
-        jbModificar.setBorderPainted(false);
-        jbModificar.setFocusPainted(false);
-        jbModificar.setFocusable(false);
-        jbModificar.setIconTextGap(10);
-        jbModificar.setRequestFocusEnabled(false);
-        jbModificar.setVerifyInputWhenFocusTarget(false);
-        jbModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbModificarActionPerformed(evt);
+                jbListarPorProveedorActionPerformed(evt);
             }
         });
 
@@ -110,15 +77,11 @@ public class MenuCompras extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(146, 146, 146)
                 .addComponent(jbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(jbListarPorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 358, Short.MAX_VALUE)
+                .addComponent(jbListarPorProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,9 +89,7 @@ public class MenuCompras extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbListarPorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbListarPorProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
@@ -169,22 +130,20 @@ public class MenuCompras extends javax.swing.JInternalFrame {
         escritorio.add(comRegistrar);
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
-    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        
-    }//GEN-LAST:event_jbEliminarActionPerformed
-
-    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        
-    }//GEN-LAST:event_jbModificarActionPerformed
+    private void jbListarPorProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarPorProveedorActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ComprasListarPorProveedores comListar = new ComprasListarPorProveedores();
+        comListar.setVisible(true);
+        escritorio.add(comListar);
+    }//GEN-LAST:event_jbListarPorProveedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton jbEliminar;
-    private javax.swing.JButton jbListarPorProducto;
-    private javax.swing.JButton jbModificar;
+    private javax.swing.JButton jbListarPorProveedor;
     private javax.swing.JButton jbRegistrar;
     // End of variables declaration//GEN-END:variables
 }

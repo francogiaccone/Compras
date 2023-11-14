@@ -85,6 +85,11 @@ public class MenuProveedor extends javax.swing.JInternalFrame {
         jbListarPorProducto.setIconTextGap(10);
         jbListarPorProducto.setRequestFocusEnabled(false);
         jbListarPorProducto.setVerifyInputWhenFocusTarget(false);
+        jbListarPorProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbListarPorProductoActionPerformed(evt);
+            }
+        });
 
         jbModificar.setBackground(new java.awt.Color(208, 207, 207));
         jbModificar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -184,6 +189,13 @@ public class MenuProveedor extends javax.swing.JInternalFrame {
         escritorio.add(provEliminar);
     }//GEN-LAST:event_jbEliminarActionPerformed
 
+    private void jbListarPorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarPorProductoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ProveedoresListarPorProducto provListar = new ProveedoresListarPorProducto();
+        provListar.setVisible(true);
+        escritorio.add(provListar);
+    }//GEN-LAST:event_jbListarPorProductoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
