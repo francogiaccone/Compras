@@ -180,7 +180,7 @@ public class ProveedorData {
                     + "JOIN compra ON compra.idProveedor = proveedor.idProveedor "
                     + "JOIN detallecompra ON detallecompra.idCompra = compra.idCompra "
                     + "JOIN producto ON detallecompra.idProducto = producto.idProducto "
-                    + "WHERE producto.idProducto = ? AND proveedor.estado = true";
+                    + "WHERE producto.idProducto = ?";
         
         ArrayList<Proveedor> proveedores = new ArrayList<>();
         
@@ -197,7 +197,7 @@ public class ProveedorData {
                     rs.getString("razonSocial"),
                     rs.getString("domicilio"),
                     rs.getString("telefono"),
-                    true
+                    rs.getBoolean("estado")
                 );
                 
                 proveedores.add(proveedor);

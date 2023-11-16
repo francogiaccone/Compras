@@ -130,7 +130,7 @@ public class ProveedoresListarPorProducto extends javax.swing.JInternalFrame {
             
             modelo.setRowCount(0);
             for (Proveedor prov : proveedores) {
-                modelo.addRow(new Object[] {prov.getIdProveedor(), prov.getRazonSocial(), prov.getDomicilio(), prov.getTelefono()});
+                modelo.addRow(new Object[] {prov.getIdProveedor(), prov.getRazonSocial(), prov.getDomicilio(), prov.getTelefono(), prov.isEstado() ? "Activo" : "Eliminado"});
             }
             
         } catch (NullPointerException ex) {
@@ -143,6 +143,7 @@ public class ProveedoresListarPorProducto extends javax.swing.JInternalFrame {
         modelo.addColumn("Razón Social");
         modelo.addColumn("Domicilio");
         modelo.addColumn("Teléfono");
+        modelo.addColumn("Estado");
         
         jtTabla.setModel(modelo);
     }
