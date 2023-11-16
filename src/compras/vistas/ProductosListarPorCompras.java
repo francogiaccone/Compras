@@ -37,8 +37,6 @@ public class ProductosListarPorCompras extends javax.swing.JInternalFrame {
         
         cargarCombo();
         armarCabecera();
-        cargarTabla();
-        modelo.setRowCount(0);
         
         Historial nuevoHistorial = new Historial("Listar productos por compras", LocalDateTime.now());
         historial.add(nuevoHistorial);
@@ -120,7 +118,7 @@ public class ProductosListarPorCompras extends javax.swing.JInternalFrame {
             
             modelo.setRowCount(0);
             for (Producto prod : productos) {
-                modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getPrecioActual(), prod.getStock()});
+                modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getPrecioActual(), prod.getStock(), prod.isEstado() ? "Activo" : "Eliminado"});
             }
             
         } catch (NullPointerException ex) {
@@ -144,16 +142,9 @@ public class ProductosListarPorCompras extends javax.swing.JInternalFrame {
         modelo.addColumn("Descripción");
         modelo.addColumn("Precio");
         modelo.addColumn("Stock");
+        modelo.addColumn("Estado");
         
         jtTabla.setModel(modelo);
-    }
-    
-    private void cargarTabla() {
-        ArrayList<Producto> productos = (ArrayList<Producto>) prodData.listarProductos();
-        
-        for (Producto prod : productos) {
-            modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getPrecioActual(), prod.getStock()});
-        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel;

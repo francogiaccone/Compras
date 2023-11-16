@@ -123,7 +123,7 @@ public class ProductosListarPorFecha extends javax.swing.JInternalFrame {
             modelo.setRowCount(0);
             
             for (Producto prod : productos) {
-                modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getPrecioActual(), prod.getStock()});
+                modelo.addRow(new Object[] {prod.getIdProducto(), prod.getNombre(), prod.getDescripcion(), prod.getPrecioActual(), prod.getStock(), prod.isEstado() ? "Activo" : "Eliminado"});
             }
         } catch (NullPointerException ex) {
             modelo.setRowCount(0);
@@ -137,6 +137,7 @@ public class ProductosListarPorFecha extends javax.swing.JInternalFrame {
         modelo.addColumn("Descripción");
         modelo.addColumn("Precio");
         modelo.addColumn("Stock");
+        modelo.addColumn("Estado");
         
         jtTabla.setModel(modelo);
     }

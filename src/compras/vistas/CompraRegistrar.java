@@ -95,7 +95,7 @@ public class CompraRegistrar extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel6.setText("Fecha");
 
-        jbAgregarOtroProducto.setForeground(new java.awt.Color(51, 51, 255));
+        jbAgregarOtroProducto.setForeground(new java.awt.Color(0, 153, 255));
         jbAgregarOtroProducto.setText("Añadir al carrito");
         jbAgregarOtroProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -171,7 +171,7 @@ public class ProductoData {
         String sql = "SELECT producto.* FROM producto "
                     + "JOIN detallecompra ON detallecompra.idProducto = producto.idProducto "
                     + "JOIN compra ON detallecompra.idCompra = compra.idCompra "
-                    + "WHERE compra.fecha = ? AND producto.estado = 1";
+                    + "WHERE compra.fecha = ?";
         
         ArrayList<Producto> productos = new ArrayList<>();
 
@@ -185,11 +185,24 @@ public class ProductoData {
 
                 Producto producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
+                
+                boolean prodEnLista = false;
+                for (Producto prod : productos) {
+                    if (prod.getIdProducto() == producto.getIdProducto()) {
+                        prodEnLista = true;
+                        break;
+                    }
+                }
+                
+                if (prodEnLista) {
+                    continue;
+                }
+                
                 producto.setNombre(rs.getString("nombre"));
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
-                producto.setEstado(true);
+                producto.setEstado(rs.getBoolean("estado"));
 
                 productos.add(producto);
             }
@@ -204,7 +217,7 @@ public class ProductoData {
         String sql = "SELECT producto.* FROM producto "
                     + "JOIN detallecompra ON detallecompra.idProducto = producto.idProducto "
                     + "JOIN compra ON detallecompra.idCompra = compra.idCompra "
-                    + "WHERE compra.idCompra = ? AND producto.estado = 1";
+                    + "WHERE compra.idCompra = ?";
         
         ArrayList<Producto> productos = new ArrayList<>();
         
@@ -222,7 +235,7 @@ public class ProductoData {
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
-                producto.setEstado(true);
+                producto.setEstado(rs.getBoolean("estado"));
 
                 productos.add(producto);
             }
