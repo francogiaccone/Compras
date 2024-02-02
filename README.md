@@ -1,11 +1,11 @@
-Aplicación de escritorio de Administración de Ventas.
+Aplicación de escritorio de Administración de Compras.
 - Administración de productos, proveedores y compras.
 - Listado completo y búsquedas por diferentes categorías.
 - Historial de movimientos.
 
 Tecnologías utilizadas:
-- Lenguajes: JAVA, MYSQL (Bases de datos).
-- Frameworks: SWING para la interfaz de usuario.
+- JAVA, MYSQL.
+- SWING para la interfaz de usuario.
 - Conectividad con la base de datos a través de JDBC.
 - Utilización de PHPMyAdmin para la administración de la base de datos.
 
